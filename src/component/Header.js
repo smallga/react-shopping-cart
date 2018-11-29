@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
+import ScrollArea from "react-scrollbar";
 
 class Header extends Component {
   constructor(props){
@@ -45,7 +46,7 @@ class Header extends Component {
               href="#"
               onClick={this.props.removeCartProduct.bind(this,product.id)}
             >
-            x
+            ×
             </a>
           </li>
         );
@@ -101,7 +102,21 @@ class Header extends Component {
               </img>
             </div>
             <div className={this.state.openCart ? "cart-view active" : "cart-view"}>
-              {cartView}
+              <ScrollArea
+                style={{ width: 360, height: 320 }}
+                speed={0.8}
+                smoothScrolling={true}
+                stopScrollPropagation={true}
+              >
+                  {cartView}
+              </ScrollArea>
+              <div className ="cart-acton-area">
+                <button
+                 className={this.props.checkout ? "" : "disable"}
+                >
+                  結帳 ${this.props.totalPrice}
+                </button>
+              </div>
             </div>
           </div>
         </div>

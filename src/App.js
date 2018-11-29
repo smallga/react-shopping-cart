@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from "axios";
 import Header from './component/Header';
-import Products from "./component/Products"
+import Products from "./component/Products";
+import DetailView from "./component/DetailView";
 
 class App extends Component {
 
@@ -15,6 +16,9 @@ class App extends Component {
       totalProduct: 0, //總共商品
       shoppingCartProducts: [],
       iconShake: false, //icon 震動參數
+      checkout: false, //可否結帳
+      openModel: false, //是否開啟商品資訊視窗
+      selectProduct: [], //選中商品
     };
   }
 
@@ -27,6 +31,30 @@ class App extends Component {
         })
       }
     )
+  }
+
+  handleCloseModel = (e) => { //將資訊室窗關閉
+    this.setState({
+      openModel: false
+    })
+    e.preventDefault();
+  }
+
+  handleOpenModel = (id, e) => { //透過id 找尋被選擇商品,並且打開Model
+
+    let selectProduct;
+
+    selectProduct = this.state.productList.find(
+      product => {
+        return product.id === id;
+      }
+    );
+
+    this.setState({
+      openModel: true,
+      selectProduct: selectProduct
+    })
+    e.preventDefault();
   }
 
   handleSearch = (searchTerm) =>{ //更改搜尋字串
@@ -44,9 +72,16 @@ class App extends Component {
     for(var product of this.state.shoppingCartProducts){
       totalPrice += product.totalPrice;
     }
+
+    let checkout = false;
+
+    if(this.state.shoppingCartProducts.length > 0){
+      checkout = true;
+    }
     
     this.setState(
       {
+        checkout: checkout,
         totalProduct: this.state.shoppingCartProducts.length,
         totalPrice: totalPrice
       }
@@ -118,8 +153,10 @@ class App extends Component {
 
     this.setState({
       shoppingCartProducts: cartItem
+    },() =>{
+      this.countShoppingProducts();
     })
-    //e.preventDefault();
+    e.preventDefault();
   }
   
 
@@ -137,12 +174,19 @@ class App extends Component {
           iconShake={this.state.iconShake}
           shoppingCartProducts={this.state.shoppingCartProducts}
           removeCartProduct={this.removeCartProduct}
+          checkout={this.state.checkout}
         >
         </Header>
         <Products
           handleAddCart={this.handleAddCart}
           productList={this.state.productList}
           searchTerm={this.state.searchTerm}
+          handleOpenModel={this.handleOpenModel}
+        />
+        <DetailView
+          product={this.state.selectProduct}
+          handleCloseModel={this.handleCloseModel}
+          openModel={this.state.openModel}
         />
       </div>
     );

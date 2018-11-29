@@ -40,6 +40,7 @@ class Product extends Component {
         <div className="product-img">
           <img
             src={this.props.imgLink}
+            onClick={this.props.openMadel.bind(this,this.props.id)}
           >
           </img>
         </div>
@@ -59,7 +60,7 @@ class Product extends Component {
             className="product-addCart-btn"
             onClick={this.handleAddCart}
           >
-          ADD TO CART
+          加入購物車
           </button>
         </div>
       </div>

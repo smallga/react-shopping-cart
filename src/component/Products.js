@@ -33,6 +33,7 @@ class Products extends Component {
             productName={product.productName}
             imgLink={product.imgLink}
             handleAddCart={this.props.handleAddCart}
+            openMadel={this.props.handleOpenModel}
           />
         )
       });
