@@ -1,0 +1,16 @@
+@import "color";
+@import "reset";
+
+button{
+    height: 36px;
+    border-radius: 2px;
+    text-align: center;
+    color: #fff;
+    background: #bd302b;
+    border: 0;
+    font-weight: 400;
+    padding: 0 16px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer
+}

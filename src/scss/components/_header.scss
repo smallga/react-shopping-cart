@@ -1,0 +1,133 @@
+header {
+  background: white;
+  position: fixed;
+  padding: 30px 32px;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 8px 18px rgba(0,0,0,.033);
+  .container{
+    padding: 0 32px;
+    display: flex;
+    display: -webkit-flex;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+// Logo
+.logo {
+  height: 36px;
+  @media (max-width: 480px) {
+    width: 102px;
+    margin: 2px 0;
+  }
+}
+
+.search-area{
+  margin-left: 100px;
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+}
+
+// Search Box
+.search {
+  display: flex;
+  display: -webkit-flex;
+  .search-keyword{
+    margin-left: 48px;
+    height: 36px;
+    width: 100%;
+    border: 1px solid $primary-red;
+    border-radius: 2px 0 0 2px;
+    max-width: 330px;
+  }
+  .search-button{
+    border-radius: 0 2px 2px 0;
+    background: $primary-red
+      url(https://res.cloudinary.com/sivadass/image/upload/v1494692031/icons/search.png)
+      center no-repeat;
+    width: 80px;
+  }
+}
+
+//cart-info
+.shopping-cart{
+  position: relative;
+  .cart-info{
+    display: inline-block;
+    max-height: 36px;
+    table{
+      font-size: 14px;
+      color: $primary-red;
+      max-height: 36px;
+    }
+  }
+  .cart-icon{
+    display: inline-block;
+    margin-left: 8px;
+    img{
+      max-height: 36px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+  .cart-view{
+    display: none;
+    background: white;
+    .cart-products{
+      .cart-product{
+        display: inline;
+        .cart-product-img{
+          max-height: 60px;
+        }
+      }
+    }
+  }
+  .cart-view.active{
+    display: block;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: 360px;
+    height: 388px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+  }
+}
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+  }
+
+  10%,
+  20% {
+    transform: scale3d(0.8, 0.66, 0.66) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale3d(1.2, 1.2, 1.2) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+.tada {
+  animation-name: tada;
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+}
