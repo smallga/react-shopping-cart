@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   getProduct = () => { //透過 axios 找尋 json 資料，用來初始化資料
-    let url = "https://res.cloudinary.com/smallga/raw/upload/v1543225503/jsonData/productList.json"
+    let url = "https://res.cloudinary.com/smallga/raw/upload/v1543484994/jsonData/productList.json"
     axios.get(url).then(
       response => {
         this.setState({
