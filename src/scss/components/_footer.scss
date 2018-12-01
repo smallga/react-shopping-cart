@@ -1,0 +1,18 @@
+footer{
+  font-size: 16px;
+  background: $gray-eighty;
+  padding: 16px;
+  strong {
+    color: $gray-medium;
+  }
+  .footer-link{
+    margin-bottom: 20px;
+  }
+  a{
+    color: $gray-dark;
+  }
+  .footer-massage{
+    color: $gray-light;
+    font-size: 12px  
+  }
+}

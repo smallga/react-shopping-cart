@@ -1,0 +1,15 @@
+.empty-result{
+  margin-top: 30px;
+  img{
+    max-width: 350px;
+    width: 60%;
+  }
+  .empty-result-message{
+    color: $gray-dark;
+    font-size: 32px;
+  }
+  .empty-result-tip{
+    color: $gray-light;
+    font-size: 20px;
+  }
+}

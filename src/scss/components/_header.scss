@@ -126,6 +126,18 @@ header {
       @media (max-width: 400px) {
         width: 280;
       }
+      @media (max-height: 400px){
+        height: 180;
+      }
+    }
+    .empty-cart{
+      width: 100%;
+      margin: 0 auto;
+      img{
+        width: 100%;
+        max-width: 280px;
+        margin: 16px auto;
+      }
     }
     .cart-products{
       .cart-product{
