@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import ScrollArea from "react-scrollbar";
+import EmptyCartPage from "./emptyPage/EmptyCartPage"
 
 class Header extends Component {
   constructor(props){
@@ -55,7 +56,7 @@ class Header extends Component {
     let cartView;
 
     if(cartItems.length < 1){
-      cartView = <div></div>
+      cartView = <EmptyCartPage></EmptyCartPage>
     }
     else{
       cartView = 

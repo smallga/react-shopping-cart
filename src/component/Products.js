@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Product from "./Product"
+import EmptySearchResult from "./emptyPage/EmptySearchResult";
 
 class Products extends Component {
   constructor(props){
@@ -40,7 +41,9 @@ class Products extends Component {
 
     let productView;
     if(productListData.length <= 0 && term){
-      productView = <div>No result</div>
+      productView = <EmptySearchResult
+                      noResultMessage={this.props.noResultMessage}
+                      noResultTip={this.props.noResultTip}/>
     }
     else {
       productView = (

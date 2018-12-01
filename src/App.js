@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from './component/Header';
 import Products from "./component/Products";
 import DetailView from "./component/DetailView";
+import Footer from "./component/Footer";
 
 class App extends Component {
 
@@ -182,7 +183,10 @@ class App extends Component {
           productList={this.state.productList}
           searchTerm={this.state.searchTerm}
           handleOpenModel={this.handleOpenModel}
+          noResultMessage={"沒有找尋結果"}
+          noResultTip={"請重新輸入搜尋條件"}
         />
+        <Footer/>
         <DetailView
           product={this.state.selectProduct}
           handleCloseModel={this.handleCloseModel}
