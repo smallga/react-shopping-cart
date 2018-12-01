@@ -55,7 +55,9 @@ class Header extends Component {
 
     let cartView;
 
-    if(cartItems.length < 1){
+    let cartLength = cartItems.length;
+
+    if(cartLength < 1){
       cartView = <EmptyCartPage></EmptyCartPage>
     }
     else{
@@ -101,6 +103,9 @@ class Header extends Component {
                 onClick={this.openCartView}
               >
               </img>
+              <span className="cart-counter">
+                {cartLength}
+              </span>
             </div>
             <div className={this.state.openCart ? "cart-view active" : "cart-view"}>
               <ScrollArea

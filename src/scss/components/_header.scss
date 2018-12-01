@@ -85,10 +85,21 @@ header {
   .cart-icon{
     display: inline-block;
     margin-left: 8px;
+    position: relative;
     img{
       max-height: 36px;
       &:hover{
         cursor: pointer;
+      }
+    }
+    .cart-counter{
+      display: none;
+      color: white;
+      @media  (max-width: 768px){
+        display: block;
+        position: absolute;
+        top: 14;
+        left: 14;
       }
     }
   }
