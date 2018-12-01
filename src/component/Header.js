@@ -103,7 +103,7 @@ class Header extends Component {
             </div>
             <div className={this.state.openCart ? "cart-view active" : "cart-view"}>
               <ScrollArea
-                style={{ width: 360, height: 320 }}
+                className = "cart-Scroll"
                 speed={0.8}
                 smoothScrolling={true}
                 stopScrollPropagation={true}

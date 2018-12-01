@@ -12,6 +12,20 @@
       margin: 16px 16px 16px 16px;
       background: white;
       box-shadow: 0 8px 18px rgba(0,0,0,.033);
+      flex-basis: calc(25% - 32px);
+      -webkit-flex-basic: calc(25% - 32px);
+      @media (max-width: 768px) {
+        flex-basis: calc(33% - 32px);
+        -webkit-flex-basic: calc(33% - 32px);
+      }  
+      @media (max-width: 480px) {
+        flex-basis: calc(50% - 32px);
+        -webkit-flex-basic: calc(50% - 32px);
+      }  
+      @media (max-width: 320px) {
+        flex-basis: calc(100% - 32px);
+        -webkit-flex-basic: calc(100% - 32px);
+      }  
       &:hover{
         box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
       }
