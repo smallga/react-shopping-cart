@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config=config/webpack.dev.js",
-    "build": "NODE_ENV=production webpack --config=config/webpack.prod.js"
+    "build": "SET NODE_ENV=production & webpack --config=config/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -38,11 +38,14 @@
   "dependencies": {
     "autoprefixer": "^9.3.1",
     "axios": "^0.18.0",
+    "clean-webpack-plugin": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "react-scrollbar": "^0.5.4",
     "sass-loader": "^7.1.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack-merge": "^4.1.4"
   }
 }
