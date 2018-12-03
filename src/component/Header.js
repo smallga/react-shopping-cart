@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { findDOMNode } from "react-dom";
 import SearchBar from "./SearchBar";
 import ScrollArea from "react-scrollbar";
 import EmptyCartPage from "./emptyPage/EmptyCartPage"
@@ -11,6 +12,32 @@ class Header extends Component {
       cartItem: this.props.shoppingCartProducts
     };
   }
+
+  componentDidMount() { //在元素生成時將判斷是否點擊購物車的判斷加入事件中
+    document.addEventListener(
+      "click",
+      this.handleClickOutside.bind(this),
+      true
+    );
+  }
+
+  componentWillUnmount() { //元素要被回收時，是否點擊購物車的判斷移出事件中
+    document.removeEventListener(
+      "click",
+      this.handleClickOutside.bind(this),
+      true
+    );
+  }
+
+  handleClickOutside = (e) => { //判斷是否點擊購車外面
+    const cartDomNode = findDOMNode(this.refs.cartView); //找到購物車真正的DOM元素
+    if(!cartDomNode || !cartDomNode.contains(e.target)){ //判斷點擊事件是否包含在購物車底下，若無關閉視窗
+      this.setState({
+        openCart: false
+      });
+    }
+  }
+
 
   openCartView = (e) => {
     console.log(this.state.openCart);
@@ -107,7 +134,7 @@ class Header extends Component {
                 {cartLength}
               </span>
             </div>
-            <div className={this.state.openCart ? "cart-view active" : "cart-view"}>
+            <div ref="cartView" className={this.state.openCart ? "cart-view active" : "cart-view"}>
               <ScrollArea
                 className = "cart-Scroll"
                 speed={0.8}
