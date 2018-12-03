@@ -34,11 +34,10 @@ class App extends Component {
     )
   }
 
-  handleCloseModel = (e) => { //將資訊室窗關閉
+  handleCloseModel = () => { //將資訊室窗關閉
     this.setState({
       openModel: false
     })
-    e.preventDefault();
   }
 
   handleOpenModel = (id, e) => { //透過id 找尋被選擇商品,並且打開Model
@@ -186,12 +185,14 @@ class App extends Component {
           noResultMessage={"沒有找尋結果"}
           noResultTip={"請重新輸入搜尋條件"}
         />
-        <Footer/>
         <DetailView
           product={this.state.selectProduct}
           handleCloseModel={this.handleCloseModel}
           openModel={this.state.openModel}
         />
+
+        <Footer/>
+  
       </div>
     );
   }

@@ -28,7 +28,7 @@ class DetailView extends Component{
   handleClickOutside = (e) => { //判斷是否點擊資訊欄視窗的外面
     const domNode = findDOMNode(this.refs.modal);//尋找 Modal 的DOM
     if(!domNode || !domNode.contains(e.target)){ //若是點擊的元素不在Modal底下，關閉視窗
-      this.props.handleCloseModel(e);
+      this.props.handleCloseModel();
     }
   }
 

@@ -31,15 +31,17 @@ class Header extends Component {
 
   handleClickOutside = (e) => { //判斷是否點擊購車外面
     const cartDomNode = findDOMNode(this.refs.cartView); //找到購物車真正的DOM元素
-    if(!cartDomNode || !cartDomNode.contains(e.target)){ //判斷點擊事件是否包含在購物車底下，若無關閉視窗
+    if(cartDomNode.classList.contains("active")
+    && (!cartDomNode || !cartDomNode.contains(e.target))){ //判斷點擊事件是否包含在購物車底下，若無關閉視窗
       this.setState({
         openCart: false
       });
+      e.stopPropagation(); //為了防止點擊購物車button時會再執行的事件
     }
   }
 
 
-  openCartView = (e) => {
+  openCartView = (e) => { //開啟購物車
     console.log(this.state.openCart);
     this.setState(
       prevState => ({
