@@ -58,10 +58,16 @@
 .counter-input{
   display: flex;
   display: -webkit-flex;
-  max-width: 120px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+  justify-content:center;
+  align-items: center;
+  max-width: 140px;
   margin: 0 auto;
   .quantity-input{
-    height: 24px;
+    height: 30px;
     width: 48px;
     text-align: center;
     margin: 0 12px;
@@ -74,18 +80,19 @@
   }
   .increment-btn,
   .decrement-btn {
-    height: 24px;
-    width: 24px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
     border: 1px solid $gray-eighty;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     border-radius: 50%;
     text-decoration: none;
     color: inherit;
-    font-size: 30px;
-    line-height: 22px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+    font-size: 24px;
+    transition: border-color 0.3s;
     &:hover {
       color: $primary-red;
       border-color: $primary-red;
@@ -94,6 +101,9 @@
       color: $white;
       border-color: $primary-red;
       background: lighten($primary-red, 15%);
+      img {
+        -webkit-filter:invert(1);
+      }
     }
   }
 }

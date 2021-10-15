@@ -12,5 +12,11 @@ button{
     padding: 0 16px;
     font-family: inherit;
     font-size: inherit;
-    cursor: pointer
+    cursor: pointer;
+    transition: scale 0.15s ease-in-out;
+    &:active {
+        &:not(.disable) {
+            transform: scale(0.95);
+        }
+    }
 }

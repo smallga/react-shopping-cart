@@ -25,11 +25,11 @@ class SearchBar extends Component {
         <input 
           ref="searchTerm"
           type="search" 
-          placeholder="Serach for Food"
+          placeholder="搜尋..."
           className="search-keyword"
           onChange={this.handleSearch}
         ></input>
-        <SearchBtn className="search-button" onClick={this.props.hadleSerach}></SearchBtn>
+        {/* <SearchBtn className="search-button" onClick={this.props.hadleSerach}></SearchBtn> */}
       </div>
     )
   }

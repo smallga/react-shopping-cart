@@ -52,18 +52,19 @@ class Counter extends Component {
   render() {
     return (
       <div className="counter-input">
-        <a href="#" className="decrement-btn" onClick={this.handleDecrement}>
-          -
-        </a>
+        <div className="decrement-btn" onClick={this.handleDecrement}>
+          <img src="https://res.cloudinary.com/smallga/image/upload/v1634270496/icon/minus_1.png"/>
+        </div>
         <input
           ref="feedQty"
           className="quantity-input"
           value={this.state.value}
           onChange={this.handleFeed.bind(this)}>
         </input>
-        <a href="#" className="increment-btn" onClick={this.handleIncrement}>
-          +
-        </a>
+        <div className="increment-btn" onClick={this.handleIncrement}>
+        <img src="https://res.cloudinary.com/smallga/image/upload/v1634270614/icon/plus_2.png"/>
+        </div>
+
       </div>
     )
   }

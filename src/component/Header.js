@@ -3,13 +3,14 @@ import { findDOMNode } from "react-dom";
 import SearchBar from "./SearchBar";
 import ScrollArea from "react-scrollbar";
 import EmptyCartPage from "./emptyPage/EmptyCartPage"
+import FinalCartPage from "./FinalCartPage"
 
 class Header extends Component {
   constructor(props){
     super(props);
     this.state = {
       openCart: false, //判斷現在是否開啟購物車頁面
-      cartItem: this.props.shoppingCartProducts
+      finalView: false,
     };
   }
 
@@ -50,11 +51,16 @@ class Header extends Component {
     )
   }
 
+  changeFinalView = () => {
+    this.props.removeAllCartProduct();
+    this.setState({finalView: true})
+  }
+
   render() {
 
     //建立購物車畫面
     let cartItems; 
-    cartItems = this.state.cartItem.map(
+    cartItems = this.props.shoppingCartProducts.map(
       product => {
         return(
           <li className="cart-product" key={product.id}>
@@ -86,8 +92,11 @@ class Header extends Component {
 
     let cartLength = cartItems.length;
 
-    if(cartLength < 1){
+    if(cartLength < 1 && !this.state.finalView){
       cartView = <EmptyCartPage></EmptyCartPage>
+    }
+    else if(cartLength < 1 && this.state.finalView) {
+      cartView = <FinalCartPage></FinalCartPage>
     }
     else{
       cartView = 
@@ -109,32 +118,31 @@ class Header extends Component {
             </SearchBar>
           </div>
           <div className="shopping-cart">
-            <div className="cart-info">
+            {/* <div className="cart-info">
               <table>
                 <tbody>
                   <tr>
-                    <td>No of Item</td>
+                    <td>商品項目</td>
                     <td> : </td>
                     <td>{this.props.totalItem}</td>
                   </tr>
                   <tr>
-                    <td>Total Cost</td>
+                    <td>總共花費</td>
                     <td> : </td>
                     <td>{this.props.totalPrice}</td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-            <div className="cart-icon">
+            </div> */}
+            <div className="cart-icon" onClick={this.openCartView}>
               <img 
                 className={this.props.iconShake ? "tada" : ""}
-                src="https://res.cloudinary.com/smallga/image/upload/v1543392995/icon/shopping-purse-icon.png"
-                onClick={this.openCartView}
+                src="https://res.cloudinary.com/smallga/image/upload/v1634265846/icon/ic-shopping-cart.png"
               >
               </img>
-              <span className="cart-counter">
-                {cartLength}
-              </span>
+              {cartLength > 0 &&<span className="cart-counter">
+                {cartLength > 9 ? '9+' : cartLength}
+              </span>}
             </div>
             <div ref="cartView" className={this.state.openCart ? "cart-view active" : "cart-view"}>
               <ScrollArea
@@ -148,6 +156,7 @@ class Header extends Component {
               <div className ="cart-acton-area">
                 <button
                  className={this.props.checkout ? "" : "disable"}
+                 onClick={this.changeFinalView}
                 >
                   結帳 ${this.props.totalPrice}
                 </button>

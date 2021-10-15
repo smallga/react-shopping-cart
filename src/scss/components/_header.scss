@@ -10,6 +10,7 @@ header {
     padding: 0 32px;
     display: flex;
     display: -webkit-flex;
+    align-items: center;
     max-width: 960px;
     margin: 0 auto;
     @media (max-width: 768px) {
@@ -51,9 +52,15 @@ header {
   }
   .search-keyword{
     height: 36px;
-    width: 100%;
-    border: 1px solid $primary-red;
-    border-radius: 2px 0 0 2px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid $gray-light;
+    border-radius: 4px;
+    transition: all 0.2s ease-in;
+    &:focus {
+      outline: none;
+      border: 1px solid $primary-red;
+    }
   }
   .search-button{
     border-radius: 0 2px 2px 0;
@@ -93,14 +100,23 @@ header {
       }
     }
     .cart-counter{
-      display: none;
-      color: white;
-      @media  (max-width: 768px){
-        display: block;
-        position: absolute;
-        top: 14;
-        left: 14;
-      }
+      color: $red;
+      background-color: #fff;
+      border-radius: 999rem;
+      border: $red 1px solid;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -4px;
+      left: 24px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    &:hover{
+      opacity: 0.8;
     }
   }
   .cart-view{
@@ -142,16 +158,22 @@ header {
       }
     }
     .empty-cart{
+      height: 100%;
       width: 100%;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ADADAD;
       img{
         width: 100%;
-        max-width: 280px;
-        margin: 16px auto;
+        max-width: 64px;
+        margin-bottom: 20px;
       }
     }
     .cart-products{
       .cart-product{
+        padding-left: 12px;
         display: flex;
         display: -webkit-flex;
         justify-content: space-around;
@@ -162,14 +184,17 @@ header {
         }
         .cart-product-total{
           text-align: right;
+          flex: 2;
           .cart-product-qty{
             color: $gray-light;
           }
         }
         .cart-product-info{
           color: $gray-light;
+          flex: 3;
         }
         .cart-product-remove{
+          flex: 1;
           color: $gray-light;
           font-size: 24px;
           &:hover{
@@ -183,10 +208,15 @@ header {
       height: 68px;
       button{
         width: 100%;
-        background: #157711;
+        background: $green;
         &.disable{
           opacity: 0.3;
           cursor: not-allowed;
+        }
+        &:hover {
+          &:not(.disable) {
+            opacity: 0.9;
+          }
         }
       }
     }

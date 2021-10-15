@@ -158,6 +158,14 @@ class App extends Component {
     })
     e.preventDefault();
   }
+
+  removeAllCartProduct = () => {
+    this.setState({
+      shoppingCartProducts: []
+    },() =>{
+      this.countShoppingProducts();
+    })
+  }
   
 
   componentWillMount() { //建置初始化商品
@@ -174,6 +182,7 @@ class App extends Component {
           iconShake={this.state.iconShake}
           shoppingCartProducts={this.state.shoppingCartProducts}
           removeCartProduct={this.removeCartProduct}
+          removeAllCartProduct={this.removeAllCartProduct}
           checkout={this.state.checkout}
         >
         </Header>
